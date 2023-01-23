@@ -10,7 +10,11 @@ const CategoriesScreen = ({ navigation }) => {
       navigation.navigate('MealsOverview', {})
     }
     return (
-      <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPressFunction={pressHandler} />
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPressFunction={pressHandler}
+      />
     )
   }
 
