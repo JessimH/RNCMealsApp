@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 // WRAP ALL APP TO NAVIGATE
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+
+// import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
+
+// NativeStack is better but if there is some pb go with StackNavigator
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -15,15 +20,15 @@ export default function App() {
       <StatusBar style="dark" />
 
       {/* WRAP ALL APP TO NAVIGATE */}
-
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="MealsCategories"
-            component={CategoriesScreen} />
+        {/* First child will be the default screen OR you can set 'initialRouteName' to StackNavigator */}
+        <Stack.Navigator initialRouteName="MealsCategories">
           <Stack.Screen
             name="MealsOverview"
             component={MealsOverviewScreen} />
+          <Stack.Screen
+            name="MealsCategories"
+            component={CategoriesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
 
