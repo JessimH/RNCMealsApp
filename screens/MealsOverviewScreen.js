@@ -16,13 +16,22 @@ const MealsOverviewScreen = ({ route }) => {
     })
 
     const renderMealItem = (itemData) => {
+
+        const item = itemData.item
+        const mealsProps = {
+            title: item.title,
+            imageUrl: item.imageUrl,
+            duration: item.duration,
+            complexity: item.complexity,
+            affordability: item.affordability,
+        }
         return (
-            <MealItem title={itemData.item.title} />
+            <MealItem {...mealsProps} />
         )
     }
 
     return (
-        <View style={[styles.container, { backgroundColor: catColor }]}>
+        <View style={styles.container}>
             <FlatList
                 data={displayedMeals}
                 keyExtractor={(item) => item.id}
