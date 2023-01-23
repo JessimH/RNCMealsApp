@@ -3,10 +3,15 @@ import React from 'react'
 
 import { CATEGORIES, MEALS } from '../data/dummy-data'
 
-const MealsOverviewScreen = () => {
+// route prop existe for all screen components
+const MealsOverviewScreen = ({ route }) => {
+    const catId = route.params.categoryId
+    const catTitle = route.params.categoryTitle
+    const catColor = route.params.categoryColor
+
     return (
-        <View style={styles.container}>
-            <Text>MealsOverviewScreen</Text>
+        <View style={[styles.container, { backgroundColor: catColor }]}>
+            <Text>{catTitle}</Text>
         </View>
     )
 }
