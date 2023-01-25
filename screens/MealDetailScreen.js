@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native'
 import { React, useLayoutEffect } from 'react'
 import { MEALS } from '../data/dummy-data'
 import MealDetails from '../components/MealDetails'
 import Subtitle from '../components/Subtitle'
 import List from '../components/List'
+import IconButton from '../components/IconButton'
 
 const MealDetailScreen = ({ route, navigation }) => {
     const mealId = route.params.id
@@ -11,9 +12,18 @@ const MealDetailScreen = ({ route, navigation }) => {
 
     const mealTitle = selectedMeal.title
 
+    const buttonHandler = () => {
+
+    }
+
     useLayoutEffect(() => {
         navigation.setOptions({
             title: mealTitle,
+            headerRight: () => {
+                return (
+                    <IconButton icon='ios-star' color='black' size={24} onPressFunction={buttonHandler} />
+                )
+            }
         })
     }, [navigation, mealTitle])
 
