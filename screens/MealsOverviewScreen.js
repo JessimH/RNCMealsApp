@@ -1,19 +1,25 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { React, useEffect, useLayoutEffect } from 'react'
 
 import { CATEGORIES, MEALS } from '../data/dummy-data'
 import MealItem from '../components/MealItem'
 
 // route prop existe for all screen components
-const MealsOverviewScreen = ({ route }) => {
+const MealsOverviewScreen = ({ route, navigation }) => {
     const catId = route.params.categoryId
-    const catTitle = route.params.categoryTitle
-    const catColor = route.params.categoryColor
-
 
     const displayedMeals = MEALS.filter((meal) => {
         return meal.categoryIds.indexOf(catId) >= 0
     })
+
+    const catTitle = CATEGORIES.find((cat) => cat.id === catId).title
+
+    // useLayoutEffect is like useEffect but it is called before the component is rendered to the screen
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: catTitle,
+        })
+    }, [catTitle, navigation])
 
     const renderMealItem = (itemData) => {
 

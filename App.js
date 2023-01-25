@@ -25,10 +25,20 @@ export default function App() {
         <Stack.Navigator initialRouteName="MealsCategories">
           <Stack.Screen
             name="MealsOverview"
-            component={MealsOverviewScreen} />
+            component={MealsOverviewScreen}
+          // options={({ route, navigation }) => {
+          //   const catId = route.params.categoryId;
+          //   return {
+          //     title: route.params.categoryTitle,
+          //   }
+          // }}
+          />
           <Stack.Screen
             name="MealsCategories"
-            component={CategoriesScreen} />
+            component={CategoriesScreen}
+            options={{
+              title: 'Home',
+            }} />
         </Stack.Navigator>
       </NavigationContainer>
 
